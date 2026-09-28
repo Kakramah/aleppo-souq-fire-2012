@@ -46,6 +46,18 @@
   --color-border: rgba(200, 150, 12, 0.16);
   --color-border-subtle: rgba(255, 255, 255, 0.08);
 
+  --color-heading: #ffffff;
+  --color-text-lead: #d8d8d8;
+  --color-text-quote: #f7f7f7;
+  --color-on-accent: #050709;
+  --color-accent-hover: #dbab21;
+  --color-media-bg: #000000;
+  --color-footer-bg: #020304;
+  --color-success-border: #114845;
+  --color-success-text: #a1b8a6;
+  --color-error-border: #b8462b;
+  --color-error-text: #e8c4b8;
+
   --font-display: 'Cairo', system-ui, -apple-system, sans-serif;
   --font-body: 'Tajawal', system-ui, -apple-system, sans-serif;
 
@@ -218,7 +230,7 @@ body:hover .spotlight-cursor {
 
 .nav-btn {
   background: var(--color-accent);
-  color: #050709 !important;
+  color: var(--color-on-accent) !important;
   font-weight: 700;
   padding: 0.45rem 1.15rem;
   border-radius: var(--radius-pill);
@@ -299,7 +311,7 @@ body:hover .spotlight-cursor {
   font-size: clamp(2rem, 5vw, 3.6rem);
   font-weight: 700;
   line-height: 1.25;
-  color: #ffffff;
+  color: var(--color-heading);
   max-width: 22ch;
   margin-bottom: 1.5rem;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
@@ -307,7 +319,7 @@ body:hover .spotlight-cursor {
 
 .hero-lead {
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-  color: #d8d8d8;
+  color: var(--color-text-lead);
   max-width: var(--container-prose);
   line-height: 1.85;
   margin-bottom: 3rem;
@@ -391,7 +403,7 @@ body:hover .spotlight-cursor {
   font-size: clamp(1.6rem, 3.2vw, 2.3rem);
   font-weight: 700;
   line-height: 1.35;
-  color: #ffffff;
+  color: var(--color-heading);
 }
 
 .chapter-body p {
@@ -421,7 +433,7 @@ body:hover .spotlight-cursor {
   font-size: clamp(1.2rem, 2.2vw, 1.5rem);
   font-weight: 700;
   line-height: 1.75;
-  color: #f7f7f7;
+  color: var(--color-text-quote);
   margin-bottom: 1.25rem;
 }
 
@@ -456,7 +468,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3.2vw, 2.3rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 0.85rem;
 }
 
@@ -522,7 +534,7 @@ body:hover .spotlight-cursor {
   width: 40px;
   height: 40px;
   background: var(--color-accent);
-  color: #050709;
+  color: var(--color-on-accent);
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 50%;
@@ -530,7 +542,7 @@ body:hover .spotlight-cursor {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-heading);
 }
 
 .comp-label {
@@ -548,7 +560,7 @@ body:hover .spotlight-cursor {
 
 .label-before {
   right: 1.25rem;
-  color: #ffffff;
+  color: var(--color-heading);
 }
 
 .label-after {
@@ -580,7 +592,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 1rem;
 }
 
@@ -617,7 +629,7 @@ body:hover .spotlight-cursor {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #000;
+  background: var(--color-media-bg);
 }
 
 .card-media img {
@@ -647,8 +659,8 @@ body:hover .spotlight-cursor {
 
 .card-badge.real-badge {
   background: rgba(184, 70, 43, 0.9) !important;
-  color: #ffffff !important;
-  border-color: #d96528 !important;
+  color: var(--color-heading) !important;
+  border-color: var(--color-fire-warm) !important;
   box-shadow: 0 2px 10px rgba(184, 70, 43, 0.4);
 }
 
@@ -663,7 +675,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 0.65rem;
   line-height: 1.4;
 }
@@ -723,7 +735,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 0.75rem;
 }
 
@@ -815,7 +827,7 @@ body:hover .spotlight-cursor {
 .submit-btn {
   width: 100%;
   background: var(--color-accent);
-  color: #050709;
+  color: var(--color-on-accent);
   font-weight: 700;
   font-size: 1.05rem;
   padding: 0.85rem 1.5rem;
@@ -828,7 +840,7 @@ body:hover .spotlight-cursor {
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #dbab21;
+  background: var(--color-accent-hover);
   transform: translateY(-1px);
   box-shadow: 0 6px 18px var(--color-accent-glow);
 }
@@ -842,7 +854,7 @@ body:hover .spotlight-cursor {
   display: none;
   width: 18px;
   height: 18px;
-  border: 2px solid #050709;
+  border: 2px solid var(--color-on-accent);
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -868,18 +880,165 @@ body:hover .spotlight-cursor {
 .form-feedback.is-success {
   display: block;
   background: rgba(17, 72, 69, 0.4);
-  border: 1px solid #114845;
-  color: #a1b8a6;
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success-text);
 }
 
 .form-feedback.is-error {
   display: block;
   background: rgba(184, 70, 43, 0.2);
-  border: 1px solid #b8462b;
-  color: #e8c4b8;
+  border: 1px solid var(--color-error-border);
+  color: var(--color-error-text);
 }
 
-/* 13 · قسم المصادر والمراجع التوثيقية (§4.9.7) */
+/* لوحة النجاح بعد التوقيع (§8.2.3 · §4.10.2) */
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  outline: none;
+  animation: success-in var(--dur-base) var(--ease-reveal) both;
+}
+
+.pledge-form[hidden] {
+  display: none;
+}
+
+.success-message[hidden] {
+  display: none;
+}
+
+.success-icon {
+  color: var(--color-accent);
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--color-heading);
+  max-width: 34ch;
+}
+
+.success-line {
+  font-size: 1.02rem;
+  color: var(--color-success-text);
+}
+
+@keyframes success-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* كتلة المشاركة (§8.6) */
+.share-section {
+  max-width: var(--container-prose);
+  margin: 0 auto 5rem;
+}
+
+.share-card {
+  text-align: center;
+  padding: 2.25rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.share-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 1.5rem;
+}
+
+.share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  font: inherit;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease, background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.share-btn[hidden] {
+  display: none;
+}
+
+.share-btn svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.share-btn:hover,
+.share-btn:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-accent);
+}
+
+.share-btn--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.share-btn--primary:hover,
+.share-btn--primary:focus-visible {
+  background: var(--color-accent-hover);
+  color: var(--color-on-accent);
+}
+
+.share-btn--icon {
+  width: 48px;
+  padding: 0;
+  color: var(--color-accent);
+}
+
+.share-btn.is-copied {
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+.share-status {
+  min-height: 1.6em;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+  color: var(--color-success-text);
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.share-status.is-visible {
+  opacity: 1;
+}
+
+/* 13 ·قسم المصادر والمراجع التوثيقية (§4.9.7) */
 .sources-section {
   max-width: var(--container-prose);
   margin: 5rem auto;
@@ -896,7 +1055,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-border-subtle);
@@ -935,7 +1094,7 @@ body:hover .spotlight-cursor {
 }
 
 .source-info strong {
-  color: #ffffff;
+  color: var(--color-heading);
 }
 
 .source-info span {
@@ -1007,7 +1166,7 @@ body:hover .spotlight-cursor {
 
 .lightbox-close:hover {
   background: var(--color-accent);
-  color: #050709;
+  color: var(--color-on-accent);
   transform: rotate(90deg);
 }
 
@@ -1017,7 +1176,7 @@ body:hover .spotlight-cursor {
 }
 
 .lightbox-media-frame {
-  background: #000;
+  background: var(--color-media-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1051,7 +1210,7 @@ body:hover .spotlight-cursor {
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 1rem;
   line-height: 1.35;
 }
@@ -1084,7 +1243,7 @@ body:hover .spotlight-cursor {
 }
 
 .spec-val {
-  color: #ffffff;
+  color: var(--color-heading);
   font-weight: 500;
 }
 
@@ -1111,7 +1270,7 @@ body:hover .spotlight-cursor {
 
 /* 15 · التذييل السيادي المعتمد (§5.13) */
 .sovereign-footer {
-  background: #020304;
+  background: var(--color-footer-bg);
   border-top: 1px solid var(--color-border-subtle);
   padding: 5rem 1.5rem 3rem;
   margin-top: 4rem;
@@ -1162,38 +1321,38 @@ body:hover .spotlight-cursor {
 
 .footer-chips {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
 .contact-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.55rem 1.25rem;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
   background: var(--color-surface);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-pill);
-  font-size: 0.88rem;
-  color: var(--color-text);
-  min-height: 44px;
-  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease, background var(--dur-fast) ease;
+  border-radius: 50%;
+  color: var(--color-accent);
+  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease, background var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
-.contact-chip:hover {
+.contact-chip:hover,
+.contact-chip:focus-visible {
   transform: translateY(-2px);
   border-color: var(--color-border);
   background: var(--color-surface-hover);
+  color: var(--color-gold-emblem);
 }
 
 .chip-icon {
-  color: var(--color-accent);
-}
-
-.chip-label {
-  font-family: inherit;
-  font-weight: 500;
+  display: block;
+  width: 22px;
+  height: 22px;
 }
 
 .footer-legal {
@@ -1273,17 +1432,6 @@ body:hover .spotlight-cursor {
 
   .lightbox-sidebar {
     padding: 1.5rem;
-  }
-
-  .footer-chips {
-    flex-direction: column;
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .contact-chip {
-    width: 100%;
-    justify-content: center;
   }
 }
 
