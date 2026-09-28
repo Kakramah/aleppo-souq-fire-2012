@@ -165,8 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const galleryData = Array.from(galleryCards).map((card) => {
     const img = card.querySelector('img');
-    const title = card.querySelector('.card-title')?.textContent || '';
-    const desc = card.querySelector('.card-desc')?.textContent || '';
+    // العنوان والوصف من data-title وdata-desc (8.3ب.2)، ونص البطاقة احتياط
+    const title = card.dataset.title || card.querySelector('.card-title')?.textContent || '';
+    const desc = card.dataset.desc || card.querySelector('.card-desc')?.textContent || '';
     const metaSpans = card.querySelectorAll('.card-meta span');
     const cameraSpecs = Array.from(metaSpans).map((s) => s.textContent).join(' · ');
 
@@ -260,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pledgeForm = document.getElementById('pledgeForm');
   const submitBtn = document.getElementById('submitBtn');
   const formFeedback = document.getElementById('formFeedback');
+  const pledgeSuccess = document.getElementById('pledgeSuccess');
 
   let lastSubmissionTime = 0;
   const RATE_LIMIT_MS = 30000; // مهلة 30 ثانية بين إرسالين (§4.10.4)
@@ -302,10 +304,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const result = await response.json();
 
-        if (response.ok && (result.success || result.message)) {
+        if (response.ok && result.success) {
           lastSubmissionTime = Date.now();
-          showFeedback('تم تسجيل شهادتك وتعهدك بنجاح في سجل ذاكرة حلب التوثيقية. سواعد السوريين لن تنسى.', 'success');
           pledgeForm.reset();
+          if (pledgeSuccess) {
+            // لوحة النجاح تحل محل النموذج داخل الصفحة (8.2)
+            formFeedback.textContent = '';
+            formFeedback.className = 'form-feedback';
+            formFeedback.style.display = '';
+            pledgeForm.hidden = true;
+            pledgeSuccess.hidden = false;
+            pledgeSuccess.focus();
+          } else {
+            showFeedback('تم تسجيل شهادتك وتعهدك بنجاح في سجل ذاكرة حلب التوثيقية. سواعد السوريين لن تنسى.', 'success');
+          }
         } else {
           showFeedback('حدث تعذر مؤقت أثناء الاتصال بقاعدة البيانات. يرجى المحاولة بعد لحظات.', 'error');
         }
@@ -332,6 +344,73 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       formFeedback.style.display = 'block';
     }
+  }
+
+  // =================================================================
+  // كتلة المشاركة: مشاركة الجهاز، وبديلها نسخ الرابط بتأكيد مرئي (8.6)
+  // =================================================================
+  const shareNative = document.getElementById('shareNative');
+  const shareCopy = document.getElementById('shareCopy');
+  const shareStatus = document.getElementById('shareStatus');
+  const ogUrl = document.querySelector('meta[property="og:url"]')?.content;
+  const shareData = {
+    title: document.title,
+    text: document.title,
+    url: ogUrl || window.location.href.split('#')[0]
+  };
+  let shareStatusTimer = null;
+
+  function announceShare(message) {
+    if (!shareStatus) return;
+    shareStatus.textContent = message;
+    shareStatus.classList.add('is-visible');
+    clearTimeout(shareStatusTimer);
+    shareStatusTimer = setTimeout(() => {
+      shareStatus.classList.remove('is-visible');
+      shareStatus.textContent = '';
+    }, 3500);
+  }
+
+  if (shareNative && typeof navigator.share === 'function') {
+    shareNative.hidden = false;
+    shareNative.addEventListener('click', async () => {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // إلغاء المستخدم للمشاركة ليس خطأً يُعرض
+      }
+    });
+  }
+
+  function copyWithFallback(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise((resolve, reject) => {
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(field);
+      ok ? resolve() : reject(new Error('copy failed'));
+    });
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener('click', async () => {
+      try {
+        await copyWithFallback(shareData.url);
+        shareCopy.classList.add('is-copied');
+        announceShare('تم نسخ الرابط.');
+        setTimeout(() => shareCopy.classList.remove('is-copied'), 3500);
+      } catch (err) {
+        announceShare('تعذر النسخ، انسخ الرابط من شريط العنوان.');
+      }
+    });
   }
 
 });
