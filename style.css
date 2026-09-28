@@ -906,6 +906,10 @@ body:hover .spotlight-cursor {
   animation: success-in var(--dur-base) var(--ease-reveal) both;
 }
 
+.pledge-form[hidden] {
+  display: none;
+}
+
 .success-message[hidden] {
   display: none;
 }
